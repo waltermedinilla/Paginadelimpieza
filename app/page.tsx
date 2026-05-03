@@ -1,3 +1,5 @@
+'use client'
+
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 import ServiceCarousel from '@/components/ServiceCarousel'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -236,30 +238,16 @@ export default function Page() {
         <section
           id="inicio"
           className="relative min-h-[92vh] flex flex-col items-center justify-center px-4 overflow-hidden"
-          style={{ background: 'var(--bg-primary)' }}
         >
-          {/* Marca de agua — palmera */}
+          {/* Fondo — foto palmera */}
           <div
-            className="watermark-container"
-            style={{ opacity: 'var(--watermark-opacity)' }}
-          >
-            <div className="absolute right-[5%] top-[8%] w-[340px] h-[560px] md:w-[420px] md:h-[700px]">
-              <PalmWatermark />
-            </div>
-          </div>
-
-          {/* Elemento decorativo floral (círculo degradado) */}
-          <div
-            className="absolute top-[-120px] left-[-80px] w-[400px] h-[400px] rounded-full pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)',
-            }}
+            className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+            style={{ backgroundImage: "url('/Palmera.jpeg')" }}
           />
+          {/* Superposición oscura para legibilidad */}
           <div
-            className="absolute bottom-[-80px] right-[-60px] w-[300px] h-[300px] rounded-full pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
-            }}
+            className="absolute inset-0"
+            style={{ background: 'rgba(20,17,14,0.72)' }}
           />
 
           {/* Contenido del hero */}
