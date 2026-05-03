@@ -1,0 +1,544 @@
+import ThemeSwitcher from '@/components/ThemeSwitcher'
+import ServiceCarousel from '@/components/ServiceCarousel'
+import WhatsAppButton from '@/components/WhatsAppButton'
+
+// ─── SVG Palmera (marca de agua) ─────────────────────────────────────────────
+function PalmWatermark() {
+  return (
+    <svg
+      viewBox="0 0 300 500"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
+      aria-hidden="true"
+    >
+      {/* Tronco principal */}
+      <path
+        d="M155 490 C148 420 140 350 145 280 C150 210 158 140 150 70"
+        stroke="var(--accent-gold)"
+        strokeWidth="6"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Fronda izquierda superior */}
+      <path
+        d="M150 70 C130 30 90 10 50 20 C70 35 95 55 120 80"
+        stroke="var(--accent-gold)"
+        strokeWidth="3"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Fronda derecha superior */}
+      <path
+        d="M150 70 C170 25 215 5 255 18 C230 35 200 52 175 78"
+        stroke="var(--accent-gold)"
+        strokeWidth="3"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Fronda izquierda media */}
+      <path
+        d="M147 90 C115 55 70 45 30 60 C60 72 95 88 130 100"
+        stroke="var(--accent-gold)"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Fronda derecha media */}
+      <path
+        d="M153 90 C188 52 235 42 275 55 C242 68 205 85 168 98"
+        stroke="var(--accent-gold)"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Fronda izquierda baja */}
+      <path
+        d="M144 115 C108 88 62 85 22 105 C55 112 95 120 135 128"
+        stroke="var(--accent-gold)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Fronda derecha baja */}
+      <path
+        d="M156 115 C195 87 244 83 282 100 C248 108 207 118 168 128"
+        stroke="var(--accent-gold)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Detalles foliares en frondas (líneas de nervadura) */}
+      <path d="M90 28 C100 40 112 55 122 70" stroke="var(--accent-gold)" strokeWidth="1" opacity="0.5" fill="none"/>
+      <path d="M210 22 C198 36 185 52 175 67" stroke="var(--accent-gold)" strokeWidth="1" opacity="0.5" fill="none"/>
+      <path d="M60 68 C75 78 92 90 110 98" stroke="var(--accent-gold)" strokeWidth="1" opacity="0.5" fill="none"/>
+      <path d="M240 62 C224 73 206 86 188 95" stroke="var(--accent-gold)" strokeWidth="1" opacity="0.5" fill="none"/>
+      {/* Cocos */}
+      <circle cx="142" cy="78" r="5" fill="var(--accent-gold)" opacity="0.6"/>
+      <circle cx="162" cy="75" r="4" fill="var(--accent-gold)" opacity="0.5"/>
+      <circle cx="150" cy="85" r="4.5" fill="var(--accent-gold)" opacity="0.55"/>
+    </svg>
+  )
+}
+
+// ─── Icono Casa ───────────────────────────────────────────────────────────────
+function HomeIcon() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
+      <path d="M9 21V12h6v9"/>
+    </svg>
+  )
+}
+
+// ─── Icono Industria ─────────────────────────────────────────────────────────
+function BuildingIcon() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="1"/>
+      <path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
+    </svg>
+  )
+}
+
+// ─── Icono Check ─────────────────────────────────────────────────────────────
+function CheckIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  )
+}
+
+// ─── Datos de Sectores ────────────────────────────────────────────────────────
+const sectors = [
+  {
+    id: 'hogar',
+    icon: <HomeIcon />,
+    title: 'Hogar & Residencias',
+    subtitle: 'Para domicilios particulares y barrios privados',
+    description:
+      'Cuidamos cada rincón de tu hogar con productos especializados, personal capacitado y protocolos que garantizan higiene profunda sin dañar superficies ni objetos de valor.',
+    items: [
+      'Casas y departamentos particulares',
+      'Countries y barrios privados',
+      'Propiedades de alquiler temporario',
+      'Limpieza post-obra residencial',
+    ],
+    image: 'https://placehold.co/560x380/2A2825/C9A84C?text=Limpieza+Hogar',
+    // REEMPLAZAR: imagen real de limpieza de hogar de alta gama
+  },
+  {
+    id: 'industria',
+    icon: <BuildingIcon />,
+    title: 'Industria & Comercios',
+    subtitle: 'Para empresas, geriátricos y centros comerciales',
+    description:
+      'Ofrecemos soluciones de limpieza industrial con equipamiento profesional, productos certificados y frecuencia adaptada a la operación de cada negocio.',
+    items: [
+      'Oficinas y edificios corporativos',
+      'Geriátricos y centros de salud',
+      'Centros comerciales y locales',
+      'Plantas industriales y depósitos',
+    ],
+    image: 'https://placehold.co/560x380/2A2825/C9A84C?text=Limpieza+Industrial',
+    // REEMPLAZAR: imagen real de limpieza industrial de alta gama
+  },
+]
+
+// ─── Datos de Características ────────────────────────────────────────────────
+const features = [
+  { icon: '◈', title: 'Personal Certificado', desc: 'Todo nuestro equipo cuenta con capacitación en protocolos de limpieza y manipulación de productos.' },
+  { icon: '◈', title: 'Productos Homologados', desc: 'Usamos exclusivamente productos certificados, respetuosos con el medio ambiente y las superficies.' },
+  { icon: '◈', title: 'Seguro de Responsabilidad', desc: 'Contamos con cobertura de responsabilidad civil para cada servicio realizado.' },
+  { icon: '◈', title: 'Disponibilidad 7x7', desc: 'Atendemos todos los días de la semana, incluyendo feriados y horarios especiales.' },
+  { icon: '◈', title: 'Sin Contratos Forzosos', desc: 'Planes flexibles sin permanencia mínima. Adaptamos el servicio a tus necesidades.' },
+  { icon: '◈', title: 'Garantía de Satisfacción', desc: 'Si no quedás conforme, volvemos sin cargo adicional hasta que el resultado sea perfecto.' },
+]
+
+// ─────────────────────────────────────────────────────────────────────────────
+export default function Page() {
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5491100000000'
+  const defaultMsg = 'Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20de%20limpieza%20profesional.'
+  const waHref = `https://wa.me/${number}?text=${defaultMsg}`
+
+  return (
+    <>
+      {/* ══════════════════════════════════════════
+          HEADER
+      ══════════════════════════════════════════ */}
+      <header
+        className="sticky top-0 z-40 w-full backdrop-blur-md"
+        style={{
+          background: 'rgba(var(--bg-secondary-rgb, 28,26,24), 0.92)',
+          borderBottom: '1px solid var(--border-color)',
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+          {/* Logo */}
+          <a href="#inicio" className="flex items-center gap-2.5 flex-shrink-0">
+            <span
+              className="text-2xl leading-none select-none"
+              style={{ color: 'var(--accent-gold)' }}
+            >
+              ❧
+            </span>
+            <div>
+              <span className="font-bold text-sm tracking-[0.15em] uppercase" style={{ color: 'var(--text-primary)' }}>
+                Limpieza
+              </span>
+              <span className="font-light text-sm tracking-[0.15em] uppercase ml-1.5" style={{ color: 'var(--accent-gold)' }}>
+                Profesional
+              </span>
+            </div>
+          </a>
+
+          {/* Navegación centrada (desktop) */}
+          <nav className="hidden lg:flex items-center gap-6">
+            {[
+              ['#sectores', 'Servicios'],
+              ['#planes', 'Planes'],
+              ['#nosotros', 'Nosotros'],
+              ['#contacto', 'Contacto'],
+            ].map(([href, label]) => (
+              <a
+                key={href}
+                href={href}
+                className="text-xs font-medium uppercase tracking-widest transition-colors duration-200"
+                style={{ color: 'var(--text-secondary)' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-gold)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Derecha: ThemeSwitcher + CTA */}
+          <div className="flex items-center gap-3">
+            <ThemeSwitcher />
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold hidden sm:inline-flex text-xs py-2 px-4"
+            >
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        {/* ══════════════════════════════════════════
+            HERO
+        ══════════════════════════════════════════ */}
+        <section
+          id="inicio"
+          className="relative min-h-[92vh] flex flex-col items-center justify-center px-4 overflow-hidden"
+          style={{ background: 'var(--bg-primary)' }}
+        >
+          {/* Marca de agua — palmera */}
+          <div
+            className="watermark-container"
+            style={{ opacity: 'var(--watermark-opacity)' }}
+          >
+            <div className="absolute right-[5%] top-[8%] w-[340px] h-[560px] md:w-[420px] md:h-[700px]">
+              <PalmWatermark />
+            </div>
+          </div>
+
+          {/* Elemento decorativo floral (círculo degradado) */}
+          <div
+            className="absolute top-[-120px] left-[-80px] w-[400px] h-[400px] rounded-full pointer-events-none"
+            style={{
+              background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)',
+            }}
+          />
+          <div
+            className="absolute bottom-[-80px] right-[-60px] w-[300px] h-[300px] rounded-full pointer-events-none"
+            style={{
+              background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
+            }}
+          />
+
+          {/* Contenido del hero */}
+          <div className="relative z-10 max-w-3xl mx-auto text-center animate-fade-in-up">
+            <p
+              className="text-xs uppercase tracking-[0.4em] mb-6 inline-block"
+              style={{ color: 'var(--accent-gold)' }}
+            >
+              ✦ &nbsp; Excelencia en cada detalle &nbsp; ✦
+            </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+              <span style={{ color: 'var(--text-primary)' }}>Limpieza que</span>
+              <br />
+              <span className="text-shimmer">transforma espacios</span>
+            </h1>
+            <p
+              className="text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Servicios profesionales de alta gama para hogares e industria. Personal
+              certificado, productos homologados y planes personalizados desde el nivel
+              Bronce hasta el exclusivo Diamante.
+            </p>
+
+            {/* Botones CTA */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn-gold">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.118 1.531 5.845L.057 23.535a.75.75 0 00.918.943l5.84-1.53A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.5-5.24-1.375l-.375-.213-3.886 1.02 1.037-3.795-.232-.389A9.957 9.957 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
+                Cotización Rápida
+              </a>
+              <a href="#planes" className="btn-gold-outline">
+                Ver Planes
+              </a>
+            </div>
+
+            {/* Stats rápidos */}
+            <div
+              className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto pt-8"
+              style={{ borderTop: '1px solid var(--border-color)' }}
+            >
+              {[
+                { value: '+500', label: 'Clientes activos' },
+                { value: '8+', label: 'Años de experiencia' },
+                { value: '100%', label: 'Satisfacción garantizada' },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="text-2xl font-bold" style={{ color: 'var(--accent-gold)' }}>
+                    {stat.value}
+                  </p>
+                  <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════
+            SECTORES — Hogar vs. Industria
+        ══════════════════════════════════════════ */}
+        <section id="sectores" className="py-20 px-4" style={{ background: 'var(--bg-primary)' }}>
+          <div className="max-w-6xl mx-auto">
+            {/* Cabecera */}
+            <div className="text-center mb-14">
+              <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>
+                Sectores
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
+                ¿Dónde necesitás limpieza?
+              </h2>
+              <div className="gold-divider" />
+            </div>
+
+            {/* Grilla de sectores */}
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
+              {sectors.map((sector, idx) => (
+                <div
+                  key={sector.id}
+                  className="card-hover rounded-sm overflow-hidden"
+                  style={{
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border-color)',
+                    animationDelay: `${idx * 0.15}s`,
+                  }}
+                >
+                  {/* Imagen placeholder — REEMPLAZAR por imagen real */}
+                  <div className="relative h-52 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={sector.image}
+                      alt={sector.title}
+                      className="w-full h-full object-cover opacity-60"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: 'linear-gradient(to top, var(--bg-card) 0%, transparent 60%)',
+                      }}
+                    />
+                    <div className="absolute bottom-4 left-5">{sector.icon}</div>
+                  </div>
+
+                  {/* Contenido */}
+                  <div className="p-6">
+                    <p className="text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--accent-gold)' }}>
+                      {sector.subtitle}
+                    </p>
+                    <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>
+                      {sector.title}
+                    </h3>
+                    <p className="text-sm mb-5 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                      {sector.description}
+                    </p>
+                    <ul className="space-y-2">
+                      {sector.items.map((item) => (
+                        <li key={item} className="flex items-center gap-2.5 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                          <CheckIcon />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════
+            CARRUSEL DE PLANES
+        ══════════════════════════════════════════ */}
+        <ServiceCarousel />
+
+        {/* ══════════════════════════════════════════
+            POR QUÉ ELEGIRNOS
+        ══════════════════════════════════════════ */}
+        <section id="nosotros" className="py-20 px-4 relative overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
+          {/* Elemento decorativo floral */}
+          <div
+            className="absolute left-1/2 top-0 -translate-x-1/2 w-[600px] h-[2px] pointer-events-none"
+            style={{ background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }}
+          />
+
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>
+                Por qué elegirnos
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
+                Nuestra diferencia es el detalle
+              </h2>
+              <div className="gold-divider" />
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {features.map((feat, idx) => (
+                <div
+                  key={feat.title}
+                  className="p-6 rounded-sm card-hover"
+                  style={{
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border-color)',
+                    animationDelay: `${idx * 0.1}s`,
+                  }}
+                >
+                  <span className="text-2xl block mb-4" style={{ color: 'var(--accent-gold)' }}>
+                    {feat.icon}
+                  </span>
+                  <h3 className="text-base font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
+                    {feat.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                    {feat.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════
+            BANDA CTA CENTRAL
+        ══════════════════════════════════════════ */}
+        <section
+          id="contacto"
+          className="py-20 px-4 relative overflow-hidden"
+          style={{ background: 'var(--bg-secondary)' }}
+        >
+          {/* Palmera decorativa pequeña */}
+          <div
+            className="absolute right-0 top-0 bottom-0 w-64 pointer-events-none"
+            style={{ opacity: 0.03 }}
+          >
+            <PalmWatermark />
+          </div>
+
+          <div className="max-w-3xl mx-auto text-center relative z-10">
+            <p className="text-xs uppercase tracking-[0.4em] mb-4" style={{ color: 'var(--accent-gold)' }}>
+              ✦ &nbsp; Contacto &nbsp; ✦
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight" style={{ color: 'var(--text-primary)' }}>
+              Empezá hoy.
+              <br />
+              <span className="text-shimmer">Sin compromisos.</span>
+            </h2>
+            <p className="text-base mb-10 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              Escribinos por WhatsApp y recibí una cotización personalizada en minutos.
+              Sin contratos, sin letras chicas.
+            </p>
+
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold text-sm"
+              style={{ padding: '1rem 3rem' }}
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.118 1.531 5.845L.057 23.535a.75.75 0 00.918.943l5.84-1.53A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.5-5.24-1.375l-.375-.213-3.886 1.02 1.037-3.795-.232-.389A9.957 9.957 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+              </svg>
+              Cotizar por WhatsApp ahora
+            </a>
+
+            {/* Divider decorativo con flores */}
+            <div className="flex items-center justify-center gap-4 mt-14 mb-2">
+              <div className="flex-1 h-px" style={{ background: 'var(--border-color)' }} />
+              <span className="text-lg" style={{ color: 'var(--accent-gold)' }}>✿</span>
+              <span className="text-sm" style={{ color: 'var(--accent-gold)' }}>✦</span>
+              <span className="text-lg" style={{ color: 'var(--accent-gold)' }}>✿</span>
+              <div className="flex-1 h-px" style={{ background: 'var(--border-color)' }} />
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* ══════════════════════════════════════════
+          FOOTER
+      ══════════════════════════════════════════ */}
+      <footer className="py-10 px-4" style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Logo footer */}
+            <div className="flex items-center gap-2.5">
+              <span className="text-2xl" style={{ color: 'var(--accent-gold)' }}>❧</span>
+              <div>
+                <span className="font-bold text-sm tracking-[0.15em] uppercase" style={{ color: 'var(--text-primary)' }}>Limpieza</span>
+                <span className="font-light text-sm tracking-[0.15em] uppercase ml-1.5" style={{ color: 'var(--accent-gold)' }}>Profesional</span>
+              </div>
+            </div>
+
+            {/* Links */}
+            <nav className="flex flex-wrap items-center justify-center gap-6">
+              {['#sectores', '#planes', '#nosotros', '#contacto'].map((href) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="text-xs uppercase tracking-widest transition-colors"
+                  style={{ color: 'var(--text-muted)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-gold)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+                >
+                  {href.replace('#', '')}
+                </a>
+              ))}
+            </nav>
+
+            {/* Copyright */}
+            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+              © {new Date().getFullYear()} Limpieza Profesional
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Botón flotante de WhatsApp (componente separado) */}
+      <WhatsAppButton />
+    </>
+  )
+}
