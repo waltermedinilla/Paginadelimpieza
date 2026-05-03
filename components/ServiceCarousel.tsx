@@ -1,22 +1,19 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-// ─── Tipos ───────────────────────────────────────────────────────────────────
 interface ServiceTier {
   id: string
   name: string
   tagline: string
-  color: string        // Color del badge
-  textColor: string    // Color del texto en el badge
-  borderColor: string  // Borde izquierdo de la tarjeta
+  color: string
+  textColor: string
   icon: React.ReactNode
   frequency: string
   specs: string[]
-  highlight?: boolean  // Tarjeta destacada (Oro)
+  highlight?: boolean
 }
 
-// ─── Icono de corona SVG inline ──────────────────────────────────────────────
 function CrownIcon({ size = 28, color = 'currentColor' }: { size?: number; color?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={color} aria-hidden="true">
@@ -25,7 +22,6 @@ function CrownIcon({ size = 28, color = 'currentColor' }: { size?: number; color
   )
 }
 
-// ─── Definición de planes ────────────────────────────────────────────────────
 const tiers: ServiceTier[] = [
   {
     id: 'bronze',
@@ -33,7 +29,6 @@ const tiers: ServiceTier[] = [
     tagline: 'Esencial & Confiable',
     color: '#A0522D',
     textColor: '#FFFFFF',
-    borderColor: '#A0522D',
     frequency: 'Semanal o quincenal',
     icon: <CrownIcon color="#A0522D" size={32} />,
     specs: [
@@ -51,7 +46,6 @@ const tiers: ServiceTier[] = [
     tagline: 'Completo & Detallado',
     color: '#8A9BB0',
     textColor: '#FFFFFF',
-    borderColor: '#8A9BB0',
     frequency: 'Semanal',
     icon: <CrownIcon color="#8A9BB0" size={32} />,
     specs: [
@@ -70,7 +64,6 @@ const tiers: ServiceTier[] = [
     tagline: 'Premium & Exclusivo',
     color: '#C9A84C',
     textColor: '#1C1A18',
-    borderColor: '#C9A84C',
     frequency: '2–3 veces por semana',
     icon: <CrownIcon color="#C9A84C" size={32} />,
     highlight: true,
@@ -91,7 +84,6 @@ const tiers: ServiceTier[] = [
     tagline: 'Total & Sin Límites',
     color: '#B0D4E8',
     textColor: '#1C1A18',
-    borderColor: '#B0D4E8',
     frequency: 'Diario / A demanda',
     icon: (
       <svg width={32} height={32} viewBox="0 0 24 24" fill="#B0D4E8" aria-hidden="true">
@@ -112,16 +104,33 @@ const tiers: ServiceTier[] = [
   },
 ]
 
-// ─── Componente principal ────────────────────────────────────────────────────
 export default function ServiceCarousel() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   function scroll(dir: 'left' | 'right') {
     if (!trackRef.current) return
     const card = trackRef.current.querySelector('.carousel-card') as HTMLElement
-    const offset = (card?.offsetWidth ?? 320) + 24 // ancho de tarjeta + gap
+    const offset = (card?.offsetWidth ?? 320) + 24
     trackRef.current.scrollBy({ left: dir === 'right' ? offset : -offset, behavior: 'smooth' })
   }
+
+
+  // Scroll del track → actualiza indicador activo
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    function onTrackScroll() {
+      const card = track!.querySelector('.carousel-card') as HTMLElement
+      const cardWidth = (card?.offsetWidth ?? 320) + 24
+      const index = Math.min(Math.round(track!.scrollLeft / cardWidth), tiers.length - 1)
+      setActiveIndex(index)
+    }
+
+    track.addEventListener('scroll', onTrackScroll, { passive: true })
+    return () => track.removeEventListener('scroll', onTrackScroll)
+  }, [])
 
   return (
     <section
@@ -129,18 +138,11 @@ export default function ServiceCarousel() {
       className="py-20 px-4 relative"
       style={{ background: 'var(--bg-secondary)' }}
     >
-      {/* Encabezado de sección */}
       <div className="max-w-6xl mx-auto mb-12 text-center">
-        <p
-          className="text-xs uppercase tracking-[0.3em] mb-3"
-          style={{ color: 'var(--accent-gold)' }}
-        >
+        <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>
           Nuestros Planes
         </p>
-        <h2
-          className="text-3xl md:text-4xl font-bold mb-4"
-          style={{ color: 'var(--text-primary)' }}
-        >
+        <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
           Elige tu Nivel de Excelencia
         </h2>
         <div className="gold-divider mb-4" />
@@ -150,44 +152,24 @@ export default function ServiceCarousel() {
         </p>
       </div>
 
-      {/* Flechas de navegación (desktop) */}
       <div className="max-w-6xl mx-auto relative">
         <button
           onClick={() => scroll('left')}
           aria-label="Anterior plan"
-          className="
-            hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10
-            w-10 h-10 rounded-full items-center justify-center
-            border transition-all duration-200
-            hover:scale-110
-          "
-          style={{
-            background: 'var(--bg-card)',
-            borderColor: 'var(--border-color)',
-            color: 'var(--text-secondary)',
-          }}
+          className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border transition-all duration-200 hover:scale-110"
+          style={{ background: 'var(--bg-card)', borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
         >
           ‹
         </button>
         <button
           onClick={() => scroll('right')}
           aria-label="Siguiente plan"
-          className="
-            hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10
-            w-10 h-10 rounded-full items-center justify-center
-            border transition-all duration-200
-            hover:scale-110
-          "
-          style={{
-            background: 'var(--bg-card)',
-            borderColor: 'var(--border-color)',
-            color: 'var(--text-secondary)',
-          }}
+          className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border transition-all duration-200 hover:scale-110"
+          style={{ background: 'var(--bg-card)', borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
         >
           ›
         </button>
 
-        {/* Track con scroll-snap */}
         <div ref={trackRef} className="carousel-track">
           {tiers.map((tier) => (
             <CarouselCard key={tier.id} tier={tier} />
@@ -195,13 +177,17 @@ export default function ServiceCarousel() {
         </div>
       </div>
 
-      {/* Indicadores táctiles */}
-      <div className="flex justify-center gap-2 mt-4">
-        {tiers.map((tier) => (
+      {/* Indicadores dinámicos */}
+      <div className="flex justify-center gap-2 mt-6">
+        {tiers.map((tier, i) => (
           <div
             key={tier.id}
-            className="w-1.5 h-1.5 rounded-full transition-all"
-            style={{ background: 'var(--border-color)' }}
+            className="rounded-full transition-all duration-300"
+            style={{
+              width: activeIndex === i ? '20px' : '6px',
+              height: '6px',
+              background: activeIndex === i ? tier.color : 'var(--border-color)',
+            }}
           />
         ))}
       </div>
@@ -209,8 +195,8 @@ export default function ServiceCarousel() {
   )
 }
 
-// ─── Tarjeta individual ──────────────────────────────────────────────────────
 function CarouselCard({ tier }: { tier: ServiceTier }) {
+  const [hovered, setHovered] = useState(false)
   const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5491100000000'
   const message = encodeURIComponent(
     `Hola, me interesa el plan *${tier.name}*. ¿Podrían darme más información y una cotización?`
@@ -219,40 +205,48 @@ function CarouselCard({ tier }: { tier: ServiceTier }) {
 
   return (
     <div
-      className={`carousel-card card-hover relative rounded-sm overflow-hidden flex flex-col`}
+      className="carousel-card relative rounded-xl overflow-hidden flex flex-col"
       style={{
         background: 'var(--bg-card)',
-        borderLeft: `3px solid ${tier.borderColor}`,
-        boxShadow: tier.highlight
-          ? `0 4px 24px rgba(${201},${168},${76}, 0.18)`
-          : '0 2px 12px var(--shadow-color)',
+        boxShadow: hovered
+          ? `0 8px 32px ${tier.color}40`
+          : tier.highlight
+            ? `0 4px 24px ${tier.color}30`
+            : '0 2px 12px var(--shadow-color)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'box-shadow 0.3s ease, transform 0.3s ease',
       }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      {/* Badge "Más Popular" en plan Oro */}
+      {/* Borde superior degradado */}
+      <div
+        style={{
+          height: '3px',
+          background: `linear-gradient(90deg, transparent, ${tier.color}, transparent)`,
+        }}
+      />
+
+      {/* Badge "Más Popular" */}
       {tier.highlight && (
         <div
-          className="absolute top-0 right-0 text-[10px] font-bold uppercase tracking-widest px-3 py-1"
-          style={{
-            background: tier.color,
-            color: tier.textColor,
-          }}
+          className="absolute top-[3px] right-0 text-[10px] font-bold uppercase tracking-widest px-3 py-1"
+          style={{ background: tier.color, color: tier.textColor }}
         >
           Más Popular
         </div>
       )}
 
-      {/* Header de la tarjeta */}
-      <div className="p-6 pb-4">
-        <div className="flex items-center gap-3 mb-3">
+      {/* Header */}
+      <div className="p-6 pb-4 text-center">
+        <div className="flex flex-col items-center gap-2 mb-3">
           {tier.icon}
-          <div>
-            <span
-              className="text-xs font-bold uppercase tracking-[0.2em] px-2 py-0.5 rounded-sm"
-              style={{ background: `${tier.color}22`, color: tier.color }}
-            >
-              {tier.name}
-            </span>
-          </div>
+          <span
+            className="text-xs font-bold uppercase tracking-[0.2em] px-2 py-0.5 rounded-sm"
+            style={{ background: `${tier.color}22`, color: tier.color }}
+          >
+            {tier.name}
+          </span>
         </div>
         <h3 className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>
           {tier.tagline}
@@ -262,32 +256,25 @@ function CarouselCard({ tier }: { tier: ServiceTier }) {
         </p>
       </div>
 
-      {/* Divisor */}
       <div className="mx-6 border-t" style={{ borderColor: 'var(--border-color)' }} />
 
-      {/* Lista de especificaciones */}
       <ul className="p-6 pt-4 flex-1 space-y-2.5">
         {tier.specs.map((spec, i) => (
           <li key={i} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-            <span className="mt-0.5 text-xs flex-shrink-0" style={{ color: tier.color }}>
-              ✦
-            </span>
+            <span className="mt-0.5 text-xs flex-shrink-0" style={{ color: tier.color }}>✦</span>
             {spec}
           </li>
         ))}
       </ul>
 
-      {/* CTA */}
       <div className="p-6 pt-2">
         <a
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full text-center py-3 text-xs font-bold uppercase tracking-widest rounded-sm transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
+          className="block w-full text-center py-3 text-xs font-bold uppercase tracking-widest rounded-lg transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
           style={{
-            background: tier.highlight
-              ? `linear-gradient(135deg, ${tier.color}, #E8C870)`
-              : 'transparent',
+            background: tier.highlight ? `linear-gradient(135deg, ${tier.color}, #E8C870)` : 'transparent',
             color: tier.highlight ? tier.textColor : tier.color,
             border: tier.highlight ? 'none' : `1px solid ${tier.color}`,
           }}

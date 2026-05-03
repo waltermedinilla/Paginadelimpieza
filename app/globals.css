@@ -91,12 +91,13 @@ body {
 ───────────────────────────────────────────── */
 .carousel-track {
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  padding: 1rem 0.5rem 1.5rem;
+  padding: 1rem 1.5rem 1.5rem;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-gold) var(--bg-secondary);
 }
@@ -203,7 +204,7 @@ body {
   text-transform: uppercase;
   font-size: 0.8rem;
   padding: 0.85rem 2rem;
-  border-radius: 2px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -225,7 +226,7 @@ body {
   text-transform: uppercase;
   font-size: 0.8rem;
   padding: 0.8rem 2rem;
-  border-radius: 2px;
+  border-radius: 8px;
   border: 1px solid var(--accent-gold);
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;

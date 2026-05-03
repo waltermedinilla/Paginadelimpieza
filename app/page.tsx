@@ -291,8 +291,8 @@ export default function Page() {
               style={{ borderTop: '1px solid var(--border-color)' }}
             >
               {[
-                { value: '+500', label: 'Clientes activos' },
-                { value: '8+', label: 'Años de experiencia' },
+                { value: '+15', label: 'Clientes activos' },
+                { value: '+3', label: 'Años de experiencia' },
                 { value: '100%', label: 'Satisfacción garantizada' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
