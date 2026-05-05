@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import ServiceCarousel from '@/components/ServiceCarousel'
 import FloatingButtons from '@/components/WhatsAppButton'
 
@@ -69,12 +71,22 @@ const features = [
   { icon: '◈', title: 'Garantía de Satisfacción', desc: 'Si no quedás conforme, volvemos sin cargo adicional hasta que el resultado sea perfecto.' },
 ]
 
-// Agregar socios en public/empresas/ y registrarlos aquí
-const socios: { name: string; logo: string; url?: string }[] = [
-  // { name: 'Empresa Socia', logo: '/empresas/empresa.png', url: 'https://...' },
-]
+function getSocios(): { name: string; logo: string }[] {
+  const dir = path.join(process.cwd(), 'public', 'empresas')
+  try {
+    return fs.readdirSync(dir)
+      .filter((f) => /\.(png|jpe?g|webp|svg)$/i.test(f))
+      .map((f) => ({
+        name: f.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' ').trim(),
+        logo: `/empresas/${f}`,
+      }))
+  } catch {
+    return []
+  }
+}
 
 export default function Page() {
+  const socios = getSocios()
   const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5491100000000'
   const defaultMsg = 'Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20de%20limpieza%20profesional.'
   const waHref = `https://wa.me/${number}?text=${defaultMsg}`
@@ -268,21 +280,18 @@ export default function Page() {
             {socios.length > 0 ? (
               <div className="flex flex-wrap items-center justify-center gap-10">
                 {socios.map((socio) => (
-                  <a
+                  <div
                     key={socio.name}
-                    href={socio.url ?? '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center p-5 rounded-xl transition-all duration-200"
+                    className="flex items-center justify-center p-5 rounded-xl"
                     style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', minWidth: '160px' }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={socio.logo}
                       alt={socio.name}
-                      className="h-14 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-200"
+                      className="h-14 w-auto object-contain opacity-80"
                     />
-                  </a>
+                  </div>
                 ))}
               </div>
             ) : (
