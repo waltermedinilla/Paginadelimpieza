@@ -45,25 +45,24 @@ export default function ThemeSwitcher() {
     )
   }
 
-  const nextLabel = theme === 'dark' ? 'Claro' : 'Oscuro'
   const nextIcon = theme === 'dark' ? '◑' : '◐'
 
   return (
     <button
       onClick={toggleTheme}
-      aria-label={`Cambiar a modo ${nextLabel}`}
+      aria-label="Modo Lectura"
       className="
         flex items-center gap-2 px-4 py-2
         rounded-full border border-border
         bg-bg-card text-text-secondary
         hover:border-accent-gold hover:text-accent-gold
-        text-sm font-semibold tracking-wider uppercase
+        text-xs font-semibold tracking-wider uppercase
         transition-all duration-200
         select-none
       "
     >
-      <span className="text-lg leading-none">{nextIcon}</span>
-      <span>{nextLabel}</span>
+      <span className="text-lg leading-none flex-shrink-0">{nextIcon}</span>
+      <span className="leading-tight text-center">Modo<br />Lectura</span>
     </button>
   )
 }
