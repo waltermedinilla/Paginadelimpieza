@@ -81,7 +81,7 @@ const tiers: ServiceTier[] = [
   {
     id: 'diamond',
     name: 'Diamante',
-    tagline: 'Total & Sin Límites',
+    tagline: 'Excelencia',
     color: '#C4C0D4',
     textColor: '#1C1A18',
     frequency: 'Diario / A demanda',
