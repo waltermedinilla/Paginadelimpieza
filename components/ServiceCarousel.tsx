@@ -27,10 +27,10 @@ const tiers: ServiceTier[] = [
     id: 'bronze',
     name: 'Bronce',
     tagline: 'Esencial & Confiable',
-    color: '#A0522D',
+    color: '#CD7F32',
     textColor: '#FFFFFF',
     frequency: 'Semanal o quincenal',
-    icon: <CrownIcon color="#A0522D" size={32} />,
+    icon: <CrownIcon color="#CD7F32" size={32} />,
     specs: [
       'Limpieza general de ambientes',
       'Barrido y trapeado de pisos',
@@ -44,10 +44,10 @@ const tiers: ServiceTier[] = [
     id: 'silver',
     name: 'Plata',
     tagline: 'Completo & Detallado',
-    color: '#8A9BB0',
+    color: '#A8A9AD',
     textColor: '#FFFFFF',
     frequency: 'Semanal',
-    icon: <CrownIcon color="#8A9BB0" size={32} />,
+    icon: <CrownIcon color="#A8A9AD" size={32} />,
     specs: [
       'Todo lo incluido en Bronce',
       'Limpieza profunda de cocina',
@@ -82,11 +82,11 @@ const tiers: ServiceTier[] = [
     id: 'diamond',
     name: 'Diamante',
     tagline: 'Total & Sin Límites',
-    color: '#B0D4E8',
+    color: '#C4C0D4',
     textColor: '#1C1A18',
     frequency: 'Diario / A demanda',
     icon: (
-      <svg width={32} height={32} viewBox="0 0 24 24" fill="#B0D4E8" aria-hidden="true">
+      <svg width={32} height={32} viewBox="0 0 24 24" fill="#C4C0D4" aria-hidden="true">
         <path d="M6 2l-6 8 12 12L24 10 18 2H6zm1.5 2h9l4 5.333L12 19.5 3.5 9.333 7.5 4z" />
       </svg>
     ),
@@ -140,15 +140,20 @@ export default function ServiceCarousel() {
     >
       <div className="max-w-6xl mx-auto mb-12 text-center">
         <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>
-          Nuestros Planes
+          Planes & Servicios
         </p>
         <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-          Elige tu Nivel de Excelencia
+          Nuestras Categorías
         </h2>
         <div className="gold-divider mb-4" />
-        <p className="text-sm max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+        <p className="text-sm max-w-xl mx-auto mb-4" style={{ color: 'var(--text-secondary)' }}>
           Cuatro categorías diseñadas para adaptarse a cada necesidad, desde el mantenimiento
           esencial hasta el servicio total sin límites.
+        </p>
+        <p className="text-xs font-medium flex items-center justify-center gap-2" style={{ color: 'var(--text-muted)' }}>
+          <span style={{ color: 'var(--accent-gold)' }}>‹</span>
+          Deslizá para ver todas las categorías
+          <span style={{ color: 'var(--accent-gold)' }}>›</span>
         </p>
       </div>
 
@@ -156,7 +161,7 @@ export default function ServiceCarousel() {
         <button
           onClick={() => scroll('left')}
           aria-label="Anterior plan"
-          className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border transition-all duration-200 hover:scale-110"
+          className="flex absolute left-1 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border transition-all duration-200 hover:scale-110"
           style={{ background: 'var(--bg-card)', borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
         >
           ‹
@@ -164,7 +169,7 @@ export default function ServiceCarousel() {
         <button
           onClick={() => scroll('right')}
           aria-label="Siguiente plan"
-          className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border transition-all duration-200 hover:scale-110"
+          className="flex absolute right-1 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border transition-all duration-200 hover:scale-110"
           style={{ background: 'var(--bg-card)', borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
         >
           ›

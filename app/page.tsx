@@ -2,86 +2,8 @@
 
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 import ServiceCarousel from '@/components/ServiceCarousel'
-import WhatsAppButton from '@/components/WhatsAppButton'
+import FloatingButtons from '@/components/WhatsAppButton'
 
-// ─── SVG Palmera (marca de agua) ─────────────────────────────────────────────
-function PalmWatermark() {
-  return (
-    <svg
-      viewBox="0 0 300 500"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-      aria-hidden="true"
-    >
-      {/* Tronco principal */}
-      <path
-        d="M155 490 C148 420 140 350 145 280 C150 210 158 140 150 70"
-        stroke="var(--accent-gold)"
-        strokeWidth="6"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Fronda izquierda superior */}
-      <path
-        d="M150 70 C130 30 90 10 50 20 C70 35 95 55 120 80"
-        stroke="var(--accent-gold)"
-        strokeWidth="3"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Fronda derecha superior */}
-      <path
-        d="M150 70 C170 25 215 5 255 18 C230 35 200 52 175 78"
-        stroke="var(--accent-gold)"
-        strokeWidth="3"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Fronda izquierda media */}
-      <path
-        d="M147 90 C115 55 70 45 30 60 C60 72 95 88 130 100"
-        stroke="var(--accent-gold)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Fronda derecha media */}
-      <path
-        d="M153 90 C188 52 235 42 275 55 C242 68 205 85 168 98"
-        stroke="var(--accent-gold)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Fronda izquierda baja */}
-      <path
-        d="M144 115 C108 88 62 85 22 105 C55 112 95 120 135 128"
-        stroke="var(--accent-gold)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Fronda derecha baja */}
-      <path
-        d="M156 115 C195 87 244 83 282 100 C248 108 207 118 168 128"
-        stroke="var(--accent-gold)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Detalles foliares en frondas (líneas de nervadura) */}
-      <path d="M90 28 C100 40 112 55 122 70" stroke="var(--accent-gold)" strokeWidth="1" opacity="0.5" fill="none"/>
-      <path d="M210 22 C198 36 185 52 175 67" stroke="var(--accent-gold)" strokeWidth="1" opacity="0.5" fill="none"/>
-      <path d="M60 68 C75 78 92 90 110 98" stroke="var(--accent-gold)" strokeWidth="1" opacity="0.5" fill="none"/>
-      <path d="M240 62 C224 73 206 86 188 95" stroke="var(--accent-gold)" strokeWidth="1" opacity="0.5" fill="none"/>
-      {/* Cocos */}
-      <circle cx="142" cy="78" r="5" fill="var(--accent-gold)" opacity="0.6"/>
-      <circle cx="162" cy="75" r="4" fill="var(--accent-gold)" opacity="0.5"/>
-      <circle cx="150" cy="85" r="4.5" fill="var(--accent-gold)" opacity="0.55"/>
-    </svg>
-  )
-}
 
 // ─── Icono Casa ───────────────────────────────────────────────────────────────
 function HomeIcon() {
@@ -239,15 +161,19 @@ export default function Page() {
           id="inicio"
           className="relative min-h-[92vh] flex flex-col items-center justify-center px-4 overflow-hidden"
         >
-          {/* Fondo — foto palmera */}
+          {/* Fondo — foto palmera sutil */}
           <div
             className="absolute inset-0 bg-center bg-cover bg-no-repeat"
-            style={{ backgroundImage: "url('/Palmera.jpeg')" }}
+            style={{
+              backgroundImage: "url('/Palmera.jpeg')",
+              opacity: 0.18,
+              filter: 'brightness(1.4) saturate(0.6)',
+            }}
           />
-          {/* Superposición oscura para legibilidad */}
+          {/* Base de color del tema */}
           <div
             className="absolute inset-0"
-            style={{ background: 'rgba(20,17,14,0.72)' }}
+            style={{ background: 'var(--bg-primary)', opacity: 0.6 }}
           />
 
           {/* Contenido del hero */}
@@ -439,14 +365,6 @@ export default function Page() {
           className="py-20 px-4 relative overflow-hidden"
           style={{ background: 'var(--bg-secondary)' }}
         >
-          {/* Palmera decorativa pequeña */}
-          <div
-            className="absolute right-0 top-0 bottom-0 w-64 pointer-events-none"
-            style={{ opacity: 0.03 }}
-          >
-            <PalmWatermark />
-          </div>
-
           <div className="max-w-3xl mx-auto text-center relative z-10">
             <p className="text-xs uppercase tracking-[0.4em] mb-4" style={{ color: 'var(--accent-gold)' }}>
               ✦ &nbsp; Contacto &nbsp; ✦
@@ -525,8 +443,8 @@ export default function Page() {
         </div>
       </footer>
 
-      {/* Botón flotante de WhatsApp (componente separado) */}
-      <WhatsAppButton />
+      {/* Botones flotantes de WhatsApp e Instagram */}
+      <FloatingButtons />
     </>
   )
 }
