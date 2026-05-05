@@ -75,7 +75,7 @@ const features = [
   { icon: '◈', title: 'Personal Certificado', desc: 'Todo nuestro equipo cuenta con capacitación en protocolos de limpieza y manipulación de productos.' },
   { icon: '◈', title: 'Productos Homologados', desc: 'Usamos exclusivamente productos certificados, respetuosos con el medio ambiente y las superficies.' },
   { icon: '◈', title: 'Seguro de Responsabilidad', desc: 'Contamos con cobertura de responsabilidad civil para cada servicio realizado.' },
-  { icon: '◈', title: 'Disponibilidad 7x7', desc: 'Atendemos todos los días de la semana, incluyendo feriados y horarios especiales.' },
+  { icon: '◈', title: 'Disponibilidad 24hs/7', desc: 'Atendemos todos los días de la semana, incluyendo feriados y horarios especiales.' },
   { icon: '◈', title: 'Contratos Reales y Seguros en Escribanía', desc: 'Planes flexibles sin permanencia mínima. Adaptamos el servicio a tus necesidades.' },
   { icon: '◈', title: 'Garantía de Satisfacción', desc: 'Si no quedás conforme, volvemos sin cargo adicional hasta que el resultado sea perfecto.' },
 ]
