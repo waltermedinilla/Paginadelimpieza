@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
-// Fuente con subset latin para rendimiento óptimo
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
@@ -11,13 +12,13 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Limpieza Profesional | Servicios Premium para Hogar e Industria',
+  title: "AMENE'S Box | Limpieza & Servicios Profesionales",
   description:
-    'Servicios de limpieza profesional de alta gama. Planes Bronce, Plata, Oro y Diamante para hogares, empresas, geriátricos y centros comerciales. Cotización inmediata por WhatsApp.',
-  keywords: 'limpieza profesional, servicio de limpieza, limpieza hogar, limpieza industrial, limpieza empresas',
-  authors: [{ name: 'Limpieza Profesional' }],
+    "Servicios de limpieza profesional de alta gama. Planes Bronce, Plata, Oro y Diamante para hogares, empresas, geriátricos y centros comerciales. Cotización inmediata por WhatsApp.",
+  keywords: 'limpieza profesional, servicio de limpieza, limpieza hogar, limpieza industrial',
+  authors: [{ name: "AMENE'S Box Limpieza & Servicios" }],
   openGraph: {
-    title: 'Limpieza Profesional | Servicios Premium',
+    title: "AMENE'S Box | Limpieza & Servicios",
     description: 'Planes de limpieza Bronce, Plata, Oro y Diamante. Hogar e Industria.',
     type: 'website',
     locale: 'es_AR',
@@ -32,12 +33,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    /* suppressHydrationWarning evita el error de hidratación cuando el
-       ThemeSwitcher modifica el atributo data-theme en el cliente */
     <html lang="es" suppressHydrationWarning className={jakarta.variable}>
       <head>
-        {/* Script inline que lee localStorage ANTES de que React hidrate,
-            previniendo el destello del tema equivocado (FOUC) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -53,7 +50,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
