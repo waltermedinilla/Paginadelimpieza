@@ -326,7 +326,7 @@ export default function Page() {
                 Por qué elegirnos
               </p>
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                Nuestra diferencia es el detalle
+                No es limpieza, es Bio-Bienestar
               </h2>
               <div className="gold-divider" />
             </div>
