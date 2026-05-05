@@ -1,4 +1,5 @@
 import ThemeSwitcher from './ThemeSwitcher'
+import MobileMenu from './MobileMenu'
 
 function LogoAmenes() {
   return (
@@ -41,7 +42,7 @@ const navLinks = [
 export default function Header() {
   return (
     <header
-      className="sticky top-0 z-40 w-full backdrop-blur-md"
+      className="sticky top-0 z-40 w-full backdrop-blur-md relative"
       style={{
         background: 'rgba(var(--bg-secondary-rgb, 28,26,24), 0.92)',
         borderBottom: '1px solid var(--border-color)',
@@ -58,7 +59,10 @@ export default function Header() {
           ))}
         </nav>
 
-        <ThemeSwitcher />
+        <div className="flex items-center gap-2">
+          <ThemeSwitcher />
+          <MobileMenu />
+        </div>
       </div>
     </header>
   )
