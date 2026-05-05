@@ -2,7 +2,7 @@ import MobileMenu from './MobileMenu'
 
 function LogoAmenes() {
   return (
-    <a href="/" className="flex flex-col leading-tight select-none flex-shrink-0">
+    <a href="/" className="flex flex-col items-center leading-tight select-none flex-shrink-0">
       <div className="flex items-baseline">
         <span className="font-extrabold text-3xl tracking-wide" style={{ color: '#C9A84C' }}>
           AMENE&apos;S&nbsp;

@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <a href="/" className="flex flex-col leading-tight select-none">
+          <a href="/" className="flex flex-col items-center leading-tight select-none">
             <div className="flex items-baseline">
               <span className="font-extrabold text-xl" style={{ color: '#C9A84C' }}>
                 AMENE&apos;S&nbsp;
