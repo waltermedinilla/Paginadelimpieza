@@ -4,18 +4,10 @@ function LogoAmenes() {
   return (
     <a href="/" className="flex flex-col leading-tight select-none flex-shrink-0">
       <div className="flex items-baseline">
-        <span
-          className="font-extrabold text-3xl tracking-wide"
-          style={{
-            background: 'linear-gradient(90deg, #6B4C11 0%, #C9943A 25%, #F5D485 50%, #C9943A 75%, #6B4C11 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}
-        >
+        <span className="font-extrabold text-3xl tracking-wide" style={{ color: '#C9A84C' }}>
           AMENE&apos;S&nbsp;
         </span>
-        <span className="font-extrabold text-3xl tracking-wide" style={{ color: '#CC2222' }}>
+        <span className="font-extrabold text-3xl tracking-wide" style={{ color: '#CC0000' }}>
           Box.
         </span>
       </div>
