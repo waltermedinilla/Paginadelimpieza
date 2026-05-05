@@ -4,10 +4,6 @@ import { useEffect, useState } from 'react'
 
 type Theme = 'dark' | 'sage'
 
-const THEMES: { id: Theme; label: string; icon: string }[] = [
-  { id: 'dark', label: 'Topo Dorado', icon: '◐' },
-  { id: 'sage', label: 'Salvia Claro', icon: '◑' },
-]
 
 export default function ThemeSwitcher() {
   // Empezamos con 'dark' para que el SSR coincida con el HTML por defecto
@@ -49,26 +45,25 @@ export default function ThemeSwitcher() {
     )
   }
 
-  const current = THEMES.find((t) => t.id === theme)!
-  const next = THEMES.find((t) => t.id !== theme)!
+  const nextLabel = theme === 'dark' ? 'Claro' : 'Oscuro'
+  const nextIcon = theme === 'dark' ? '◑' : '◐'
 
   return (
     <button
       onClick={toggleTheme}
-      title={`Cambiar a tema ${next.label}`}
-      aria-label={`Tema actual: ${current.label}. Cambiar a ${next.label}`}
+      aria-label={`Cambiar a modo ${nextLabel}`}
       className="
-        flex items-center gap-2 px-3 py-1.5
+        flex items-center gap-2 px-4 py-2
         rounded-full border border-border
         bg-bg-card text-text-secondary
         hover:border-accent-gold hover:text-accent-gold
-        text-xs font-medium tracking-wider uppercase
+        text-sm font-semibold tracking-wider uppercase
         transition-all duration-200
         select-none
       "
     >
-      <span className="text-base leading-none">{next.icon}</span>
-      <span className="hidden sm:inline">{next.label}</span>
+      <span className="text-lg leading-none">{nextIcon}</span>
+      <span>{nextLabel}</span>
     </button>
   )
 }
