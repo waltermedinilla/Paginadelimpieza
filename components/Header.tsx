@@ -48,22 +48,29 @@ export default function Header() {
       }}
     >
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Logo centrado en todas las resoluciones */}
+        {/* Logo centrado (absoluto) */}
         <div className="absolute left-1/2 -translate-x-1/2">
           <LogoAmenes />
         </div>
 
-        {/* Nav — desktop, lado izquierdo */}
+        {/* Nav izquierda — primeros 3 links */}
         <nav className="hidden lg:flex items-center gap-5">
-          {navLinks.map(({ href, label }) => (
+          {navLinks.slice(0, 3).map(({ href, label }) => (
             <a key={href} href={href} className="nav-link">
               {label}
             </a>
           ))}
         </nav>
 
-        {/* Hamburguesa — mobile, lado derecho */}
-        <div className="flex items-center gap-2 ml-auto">
+        {/* Nav derecha — últimos 3 links + hamburguesa mobile */}
+        <div className="flex items-center gap-5 ml-auto">
+          <nav className="hidden lg:flex items-center gap-5">
+            {navLinks.slice(3).map(({ href, label }) => (
+              <a key={href} href={href} className="nav-link">
+                {label}
+              </a>
+            ))}
+          </nav>
           <MobileMenu />
         </div>
       </div>
