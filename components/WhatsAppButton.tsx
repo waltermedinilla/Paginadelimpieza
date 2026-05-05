@@ -24,8 +24,7 @@ export default function FloatingButtons() {
     'Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20de%20limpieza%20profesional.'
   const waHref = `https://wa.me/${number}?text=${waMessage}`
 
-  // TODO: reemplazar con el link real de la publicación de Instagram
-  const igHref = 'https://www.instagram.com/'
+  const igHref = 'https://www.instagram.com/amenes_box_solutions?utm_source=qr&igsh=cjNrOHVmOHNycHFq'
 
   return (
     <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 flex flex-row items-center gap-3">
