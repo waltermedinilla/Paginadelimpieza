@@ -376,7 +376,7 @@ export default function Page() {
             </h2>
             <p className="text-base mb-10 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Escribinos por WhatsApp y recibí una cotización personalizada en minutos.
-              Sin contratos, sin letras chicas.
+              Con contratos Certificados y Responsabilidad.
             </p>
 
             <a
