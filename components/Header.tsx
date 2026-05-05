@@ -47,9 +47,13 @@ export default function Header() {
         borderBottom: '1px solid var(--border-color)',
       }}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-        <LogoAmenes />
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        {/* Logo centrado en todas las resoluciones */}
+        <div className="absolute left-1/2 -translate-x-1/2">
+          <LogoAmenes />
+        </div>
 
+        {/* Nav — desktop, lado izquierdo */}
         <nav className="hidden lg:flex items-center gap-5">
           {navLinks.map(({ href, label }) => (
             <a key={href} href={href} className="nav-link">
@@ -58,7 +62,8 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        {/* Hamburguesa — mobile, lado derecho */}
+        <div className="flex items-center gap-2 ml-auto">
           <MobileMenu />
         </div>
       </div>
