@@ -161,16 +161,16 @@ export default function ServiceCarousel() {
         <button
           onClick={() => scroll('left')}
           aria-label="Anterior plan"
-          className="flex absolute left-1 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border transition-all duration-200 hover:scale-110"
-          style={{ background: 'var(--bg-card)', borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
+          className="flex absolute left-0 md:-left-10 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full items-center justify-center border-2 transition-all duration-200 hover:scale-110 text-2xl font-bold"
+          style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
         >
           ‹
         </button>
         <button
           onClick={() => scroll('right')}
           aria-label="Siguiente plan"
-          className="flex absolute right-1 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border transition-all duration-200 hover:scale-110"
-          style={{ background: 'var(--bg-card)', borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
+          className="flex absolute right-0 md:-right-10 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full items-center justify-center border-2 transition-all duration-200 hover:scale-110 text-2xl font-bold"
+          style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
         >
           ›
         </button>

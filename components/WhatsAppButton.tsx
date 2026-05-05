@@ -28,7 +28,7 @@ export default function FloatingButtons() {
   const igHref = 'https://www.instagram.com/'
 
   return (
-    <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-5 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 flex flex-row items-center gap-3">
       {/* Instagram */}
       <a
         href={igHref}
