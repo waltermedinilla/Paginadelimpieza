@@ -1,5 +1,7 @@
 'use client'
 
+import ThemeSwitcher from './ThemeSwitcher'
+
 function WhatsAppIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
@@ -28,6 +30,9 @@ export default function FloatingButtons() {
 
   return (
     <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 flex flex-row items-center gap-3">
+      {/* Tema */}
+      <ThemeSwitcher />
+
       {/* Instagram */}
       <a
         href={igHref}

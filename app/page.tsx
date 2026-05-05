@@ -116,9 +116,9 @@ export default function Page() {
               ✦ &nbsp; Excelencia en cada detalle &nbsp; ✦
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              <span style={{ color: 'var(--text-primary)' }}>Limpieza que</span>
+              <span style={{ color: 'var(--text-primary)' }}>No Hacemos Limpieza,</span>
               <br />
-              <span className="text-shimmer">transforma espacios</span>
+              <span className="text-shimmer">Creamos Bio-Bienestar</span>
             </h1>
             <p className="text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Servicios profesionales de alta gama para hogares e industria. Personal

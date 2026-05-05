@@ -1,4 +1,3 @@
-import ThemeSwitcher from './ThemeSwitcher'
 import MobileMenu from './MobileMenu'
 
 function LogoAmenes() {
@@ -6,7 +5,7 @@ function LogoAmenes() {
     <a href="/" className="flex flex-col leading-tight select-none flex-shrink-0">
       <div className="flex items-baseline">
         <span
-          className="font-extrabold text-xl tracking-wide"
+          className="font-extrabold text-3xl tracking-wide"
           style={{
             background: 'linear-gradient(90deg, #6B4C11 0%, #C9943A 25%, #F5D485 50%, #C9943A 75%, #6B4C11 100%)',
             WebkitBackgroundClip: 'text',
@@ -16,13 +15,13 @@ function LogoAmenes() {
         >
           AMENE&apos;S&nbsp;
         </span>
-        <span className="font-extrabold text-xl tracking-wide" style={{ color: '#CC2222' }}>
+        <span className="font-extrabold text-3xl tracking-wide" style={{ color: '#CC2222' }}>
           Box.
         </span>
       </div>
       <span
         className="font-medium tracking-[0.2em] uppercase"
-        style={{ color: '#9CA3AF', fontSize: '0.5rem' }}
+        style={{ color: '#9CA3AF', fontSize: '0.6rem' }}
       >
         Limpieza &amp; Servicios
       </span>
@@ -60,7 +59,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeSwitcher />
           <MobileMenu />
         </div>
       </div>
