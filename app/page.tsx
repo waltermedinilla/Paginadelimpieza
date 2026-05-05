@@ -141,14 +141,6 @@ export default function Page() {
           {/* Derecha: ThemeSwitcher + CTA */}
           <div className="flex items-center gap-3">
             <ThemeSwitcher />
-            <a
-              href={waHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold hidden sm:inline-flex text-xs py-2 px-4"
-            >
-              WhatsApp
-            </a>
           </div>
         </div>
       </header>

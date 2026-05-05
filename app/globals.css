@@ -101,6 +101,13 @@ body {
   scrollbar-color: var(--accent-gold) var(--bg-secondary);
 }
 
+@media (max-width: 767px) {
+  .carousel-track {
+    padding-inline: 3.75rem;
+    scroll-padding-inline: 3.75rem;
+  }
+}
+
 .carousel-card {
   scroll-snap-align: start;
   flex: 0 0 min(320px, 85vw);

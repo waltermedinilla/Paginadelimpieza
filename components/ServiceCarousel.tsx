@@ -158,11 +158,10 @@ export default function ServiceCarousel() {
       </div>
 
       <div className="max-w-6xl mx-auto relative">
-        {/* Flechas solo visibles en desktop, fuera del track */}
         <button
           onClick={() => scroll('left')}
           aria-label="Anterior plan"
-          className="hidden md:flex absolute md:-left-10 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full items-center justify-center border-2 transition-all duration-200 hover:scale-110 text-2xl font-bold"
+          className="flex absolute left-0 md:-left-10 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full items-center justify-center border-2 transition-all duration-200 hover:scale-110 text-2xl font-bold"
           style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
         >
           ‹
@@ -170,7 +169,7 @@ export default function ServiceCarousel() {
         <button
           onClick={() => scroll('right')}
           aria-label="Siguiente plan"
-          className="hidden md:flex absolute md:-right-10 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full items-center justify-center border-2 transition-all duration-200 hover:scale-110 text-2xl font-bold"
+          className="flex absolute right-0 md:-right-10 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full items-center justify-center border-2 transition-all duration-200 hover:scale-110 text-2xl font-bold"
           style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
         >
           ›
@@ -183,41 +182,19 @@ export default function ServiceCarousel() {
         </div>
       </div>
 
-      {/* Indicadores dinámicos + flechas mobile */}
-      <div className="flex justify-center items-center gap-4 mt-6">
-        {/* Flecha izquierda — solo mobile */}
-        <button
-          onClick={() => scroll('left')}
-          aria-label="Anterior plan"
-          className="flex md:hidden w-12 h-12 rounded-full items-center justify-center border-2 transition-all duration-200 hover:scale-110 text-xl font-bold"
-          style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
-        >
-          ‹
-        </button>
-
-        <div className="flex gap-2 items-center">
-          {tiers.map((tier, i) => (
-            <div
-              key={tier.id}
-              className="rounded-full transition-all duration-300"
-              style={{
-                width: activeIndex === i ? '20px' : '6px',
-                height: '6px',
-                background: activeIndex === i ? tier.color : 'var(--border-color)',
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Flecha derecha — solo mobile */}
-        <button
-          onClick={() => scroll('right')}
-          aria-label="Siguiente plan"
-          className="flex md:hidden w-12 h-12 rounded-full items-center justify-center border-2 transition-all duration-200 hover:scale-110 text-xl font-bold"
-          style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
-        >
-          ›
-        </button>
+      {/* Indicadores dinámicos */}
+      <div className="flex justify-center gap-2 mt-6">
+        {tiers.map((tier, i) => (
+          <div
+            key={tier.id}
+            className="rounded-full transition-all duration-300"
+            style={{
+              width: activeIndex === i ? '20px' : '6px',
+              height: '6px',
+              background: activeIndex === i ? tier.color : 'var(--border-color)',
+            }}
+          />
+        ))}
       </div>
     </section>
   )
