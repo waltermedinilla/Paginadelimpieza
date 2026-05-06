@@ -48,8 +48,8 @@ export default function NosotrosPage() {
       <section className="py-16 px-4" style={{ background: 'var(--bg-primary)' }}>
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>Nuestra misión</p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-            No es limpieza, es Bio-Bienestar
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
+            Creamos Seguridad,<br />Bio-Bienestar &amp; Confort.
           </h2>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             Creemos que un espacio limpio y ordenado impacta directamente en la salud, la productividad

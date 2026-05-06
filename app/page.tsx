@@ -208,8 +208,8 @@ export default function Page() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>Por qué elegirnos</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                No es limpieza, es Bio-Bienestar
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
+                Creamos Seguridad,<br />Bio-Bienestar &amp; Confort.
               </h2>
               <div className="gold-divider" />
             </div>
