@@ -46,7 +46,7 @@ Tailwind está configurado en `tailwind.config.ts` para mapear sus tokens de col
 
 La sección "Empresas que nos acompañan" en `app/page.tsx` se alimenta automáticamente leyendo `public/empresas/` con `fs.readdirSync` en el Server Component (`getSocios()`). Para agregar un socio basta con colocar su logo en esa carpeta — no hace falta tocar el código.
 
-- `public/empresas/` → logos de empresas socias (se muestran en la sección)
+- `public/empresas/conjunto/` → logos de empresas que trabajan en conjunto (se muestran en la sección "Empresas que nos acompañan")
 - `public/propio/` → assets de la propia marca (ej. `amenes-box.png`), no se muestran en esa sección
 
 ### Navegación duplicada

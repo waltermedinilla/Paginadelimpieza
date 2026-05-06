@@ -72,13 +72,13 @@ const features = [
 ]
 
 function getSocios(): { name: string; logo: string }[] {
-  const dir = path.join(process.cwd(), 'public', 'empresas')
+  const dir = path.join(process.cwd(), 'public', 'empresas', 'conjunto')
   try {
     return fs.readdirSync(dir)
       .filter((f) => /\.(png|jpe?g|webp|svg)$/i.test(f))
       .map((f) => ({
         name: f.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' ').trim(),
-        logo: `/empresas/${f}`,
+        logo: `/empresas/conjunto/${f}`,
       }))
   } catch {
     return []
