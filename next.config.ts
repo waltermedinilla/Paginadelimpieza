@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  // Compresión automática en Vercel (ya habilitada por defecto)
+  allowedDevOrigins: ['192.168.1.42'],
   compress: true,
 
   // Imágenes: dominios permitidos para next/image

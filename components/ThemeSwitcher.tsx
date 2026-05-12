@@ -51,7 +51,7 @@ export default function ThemeSwitcher() {
     <button
       onClick={toggleTheme}
       aria-label="Modo Lectura"
-      className="
+      className={`
         flex items-center gap-2 px-4 py-2
         rounded-full border border-border
         bg-bg-card text-text-secondary
@@ -59,7 +59,7 @@ export default function ThemeSwitcher() {
         text-xs font-semibold tracking-wider uppercase
         transition-all duration-200
         select-none
-      "
+      `.trim()}
     >
       <span className="text-lg leading-none flex-shrink-0">{nextIcon}</span>
       <span className="leading-tight text-center">Modo<br />Lectura</span>
