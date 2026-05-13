@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import GlowingDivider from '@/components/GlowingDivider'
 
 interface ServiceTier {
   id: string
@@ -145,7 +146,7 @@ export default function ServiceCarousel() {
         <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
           Nuestras Categorías
         </h2>
-        <div className="gold-divider mb-4" />
+        <GlowingDivider className="mb-4" />
         <p className="text-sm max-w-xl mx-auto mb-4" style={{ color: 'var(--text-secondary)' }}>
           Cuatro categorías diseñadas para adaptarse a cada necesidad, desde el mantenimiento
           esencial hasta el servicio total sin límites.

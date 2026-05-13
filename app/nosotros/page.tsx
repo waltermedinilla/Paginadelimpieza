@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import GlowingDivider from '@/components/GlowingDivider'
 
 export const metadata: Metadata = {
   title: "Sobre Nosotros | AMENE'S Box",
@@ -36,7 +37,7 @@ export default function NosotrosPage() {
         <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
           Sobre Nosotros
         </h1>
-        <div className="gold-divider mb-6" />
+        <GlowingDivider className="mb-6" />
         <p className="text-base max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
           Somos <strong style={{ color: 'var(--text-primary)' }}>AMENE&apos;S Box Limpieza & Servicios</strong>,
           una empresa nacida con el propósito de elevar el estándar de la limpieza profesional.
@@ -67,7 +68,7 @@ export default function NosotrosPage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
               Nuestros Valores
             </h2>
-            <div className="gold-divider" />
+            <GlowingDivider />
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {valores.map((v) => (
@@ -93,7 +94,7 @@ export default function NosotrosPage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
               Nuestra Historia
             </h2>
-            <div className="gold-divider" />
+            <GlowingDivider />
           </div>
           <div className="space-y-6">
             {hitos.map((hito, i) => (

@@ -13,7 +13,7 @@ function LogoAmenes() {
       </div>
       <span
         className="font-medium tracking-[0.2em] uppercase"
-        style={{ color: '#9CA3AF', fontSize: '0.6rem' }}
+        style={{ color: '#9CA3AF', fontSize: '0.9rem' }}
       >
         Limpieza &amp; Servicios
       </span>

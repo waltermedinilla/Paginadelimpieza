@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import GlowingDivider from '@/components/GlowingDivider'
 
 export const metadata: Metadata = {
   title: "Blog & Consejos | AMENE'S Box",
@@ -64,7 +65,7 @@ export default function BlogPage() {
         <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
           Blog
         </h1>
-        <div className="gold-divider mb-6" />
+        <GlowingDivider className="mb-6" />
         <p className="text-base max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
           Compartimos conocimiento sobre limpieza profesional, productos y buenas prácticas
           para que tu hogar o negocio siempre esté en las mejores condiciones.

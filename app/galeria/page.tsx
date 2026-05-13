@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import type { Metadata } from 'next'
 import GaleriaGrid from './GaleriaGrid'
+import GlowingDivider from '@/components/GlowingDivider'
 
 export const metadata: Metadata = {
   title: "Galería de Trabajos | AMENE'S Box",
@@ -52,7 +53,7 @@ export default function GaleriaPage() {
         <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
           Galería de Trabajos
         </h1>
-        <div className="gold-divider mb-6" />
+        <GlowingDivider className="mb-6" />
         <p className="text-base max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
           Resultados reales que reflejan nuestro compromiso con la excelencia.
           Cada trabajo es un estándar que superamos.

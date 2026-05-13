@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import GlowingDivider from '@/components/GlowingDivider'
 
 const servicios = [
   'Limpieza general de hogar',
@@ -73,7 +74,7 @@ export default function PresupuestoPage() {
         <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
           Solicitar Presupuesto
         </h1>
-        <div className="gold-divider mb-6" />
+        <GlowingDivider className="mb-6" />
         <p className="text-base max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
           Completá el formulario y nos ponemos en contacto por WhatsApp en minutos.
           Cotización personalizada, sin letras chicas.

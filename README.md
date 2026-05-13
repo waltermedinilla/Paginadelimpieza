@@ -1,6 +1,6 @@
-# Limpieza Profesional — Sitio Web
+# AMENE'S Box — Limpieza & Servicios Profesionales
 
-Landing page de servicios de limpieza profesional construida con Next.js 14, Tailwind CSS y TypeScript.
+Landing page de servicios de limpieza profesional para **AMENE'S Box**. Construida con Next.js 16 App Router, Tailwind CSS y TypeScript. Sin base de datos ni autenticación — todo el contenido es estático.
 
 ---
 
@@ -8,7 +8,7 @@ Landing page de servicios de limpieza profesional construida con Next.js 14, Tai
 
 - Node.js 18+ instalado
 - Cuenta en [GitHub](https://github.com)
-- Cuenta en [Vercel](https://vercel.com) (gratis)
+- Cuenta en [Vercel](https://vercel.com) (gratis) o plataforma similar
 
 ---
 
@@ -19,11 +19,17 @@ Landing page de servicios de limpieza profesional construida con Next.js 14, Tai
 npm install
 
 # Crear archivo de variables de entorno
-cp .env.local.example .env.local
-# Editar .env.local con tu número de WhatsApp real
+# (ya existe .env.local, editarlo con el número real)
+```
 
+```bash
 # Iniciar servidor de desarrollo
 npm run dev
+```
+
+Para exponer en la red local:
+```bash
+npm run dev -- -H 192.168.1.42
 ```
 
 Abrir [http://localhost:3000](http://localhost:3000)
@@ -35,11 +41,7 @@ Abrir [http://localhost:3000](http://localhost:3000)
 Editar `.env.local`:
 
 ```env
-# Número de WhatsApp sin + ni espacios (código de país + número)
-# Ejemplo Argentina: 5491122334455
 NEXT_PUBLIC_WHATSAPP_NUMBER=5491122334455
-
-# Mensaje predeterminado (URL-encoded)
 NEXT_PUBLIC_WHATSAPP_MESSAGE=Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%B3n.
 ```
 
@@ -47,109 +49,92 @@ NEXT_PUBLIC_WHATSAPP_MESSAGE=Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%
 
 ---
 
-## 3. Subir a GitHub
+## 3. Scripts disponibles
 
 ```bash
-# Inicializar repositorio Git
-git init
-git add .
-git commit -m "feat: sitio web limpieza profesional"
-
-# Crear repositorio en GitHub (sin README ni licencia)
-# Luego conectar el remoto:
-git remote add origin https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-git branch -M main
-git push -u origin main
+npm run dev       # Servidor de desarrollo
+npm run build     # Build de producción (verifica errores TS y lint)
+npm run start     # Servidor de producción (requiere build previo)
+npm run lint      # ESLint sobre app/ y components/
 ```
 
 ---
 
 ## 4. Desplegar en Vercel
 
-### Opción A — Dashboard (recomendado)
-
 1. Ir a [vercel.com/new](https://vercel.com/new)
 2. Importar el repositorio de GitHub
 3. Vercel detecta Next.js automáticamente
-4. Agregar variables de entorno en la sección **Environment Variables**:
+4. Agregar variables de entorno:
    - `NEXT_PUBLIC_WHATSAPP_NUMBER`
    - `NEXT_PUBLIC_WHATSAPP_MESSAGE`
 5. Clic en **Deploy**
 
-### Opción B — CLI (desde terminal)
-
-```bash
-# Instalar Vercel CLI globalmente
-npm install -g vercel
-
-# Desplegar (sigue el asistente interactivo)
-npx vercel
-
-# Para producción
-npx vercel --prod
-```
-
 ---
 
-## 5. Personalización
-
-### Cambiar número de WhatsApp
-Editar `NEXT_PUBLIC_WHATSAPP_NUMBER` en `.env.local` o en Vercel Dashboard.
-
-### Cambiar nombre/marca
-Editar `app/page.tsx` — buscar "Limpieza Profesional" y reemplazar con tu nombre.
-
-### Reemplazar imágenes placeholder
-Buscar en `app/page.tsx` las líneas con:
-```
-https://placehold.co/560x380/...
-```
-Reemplazar con URLs reales o rutas a imágenes en `/public`.
-
-### Modificar planes y servicios
-Editar el array `tiers` en `components/ServiceCarousel.tsx`.
-
-### Modificar colores del tema
-Editar las variables CSS en `app/globals.css` — sección `:root` (tema oscuro) y `[data-theme="sage"]` (tema claro).
-
----
-
-## 6. Estructura del proyecto
+## 5. Estructura del proyecto
 
 ```
 /app
-  layout.tsx        — Root layout, fuente, metadatos, script anti-FOUC
-  page.tsx          — Página principal (todas las secciones)
-  globals.css       — Variables CSS de temas, animaciones, base styles
+  layout.tsx              — Root layout, fuente, metadatos, script anti-FOUC
+  page.tsx                — Página principal (hero, sectores, planes, servicios, CTA, socios)
+  globals.css             — Variables CSS de temas, animaciones, botones, scrollbar
+  nosotros/page.tsx       — Página "Sobre Nosotros"
+  presupuesto/page.tsx    — Formulario de presupuesto (vía WhatsApp)
+  galeria/page.tsx        — Galería de trabajos (con filtros por categoría)
+  galeria/GaleriaGrid.tsx — Grid interactivo con filtros (cliente)
+  blog/page.tsx           — Blog placeholder
 
 /components
-  ThemeSwitcher.tsx — Botón de cambio de tema (localStorage, sin hidratación)
-  ServiceCarousel.tsx — Carrusel Bronce/Plata/Oro/Diamante (scroll-snap nativo)
-  WhatsAppButton.tsx  — Botón flotante fijo
+  Header.tsx              — Header sticky con logo y navegación
+  Footer.tsx              — Footer con links y copyright
+  MobileMenu.tsx          — Menú hamburguesa responsive
+  ThemeSwitcher.tsx       — Botón de cambio de tema (dark/sage)
+  ServiceCarousel.tsx     — Carrusel de planes (scroll-snap nativo)
+  WhatsAppButton.tsx      — Botones flotantes (WhatsApp + Instagram + tema)
 
 /public
-  placeholder.svg   — SVG placeholder (reemplazar por assets reales)
-
-tailwind.config.ts  — Colores mapeados a variables CSS
-next.config.ts      — Configuración Next.js para producción
-.env.local          — Variables de entorno (NO subir a Git)
+  empresas/conjunto/      — Logos de socios comerciales
+  galeria/                — Imágenes de galería (hogar, industrial, post-obra, exterior)
+  propio/                 — Assets de la marca
+  Palmera.jpeg            — Imagen decorativa del hero
 ```
 
 ---
 
-## 7. Build de producción
+## 6. Personalización
 
-```bash
-npm run build
-npm run start
-```
+### Cambiar número de WhatsApp
+Editar `NEXT_PUBLIC_WHATSAPP_NUMBER` en `.env.local`.
+
+### Agregar socios comerciales
+Colocar el logo en `public/empresas/conjunto/`. El server component lo lee automáticamente.
+
+### Agregar imágenes a la galería
+Colocar imágenes en `public/galeria/[categoria]/`. Compatible con las categorías: hogar, industrial, post-obra, exterior.
+
+### Modificar planes
+Editar el array `tiers` en `components/ServiceCarousel.tsx`.
+
+### Modificar servicios del recuadro de profesiones
+Editar el array de oficios en `app/page.tsx`.
+
+### Navegación duplicada
+El array `navLinks` está repetido en `Header.tsx`, `Footer.tsx` y `MobileMenu.tsx`. Si se agregan o remueven páginas, actualizar los tres.
+
+### Sistema de temas
+Variables CSS en `app/globals.css`:
+- `:root` — tema oscuro por defecto
+- `[data-theme="sage"]` — tema claro (verde salvia)
+
+Mapeadas a Tailwind en `tailwind.config.ts`.
 
 ---
 
-## Tecnologías utilizadas
+## 7. Tecnologías utilizadas
 
-- [Next.js 14](https://nextjs.org) — App Router, Server Components
+- [Next.js 16](https://nextjs.org) — App Router, Server Components
 - [Tailwind CSS 3](https://tailwindcss.com) — Utilidades CSS
-- [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) — Tipografía via `next/font`
+- [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) — Tipografía vía `next/font`
 - CSS Variables nativas — Sistema de temas sin librerías externas
 - CSS Scroll Snap — Carrusel sin dependencias

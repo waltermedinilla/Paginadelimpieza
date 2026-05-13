@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import ServiceCarousel from '@/components/ServiceCarousel'
 import FloatingButtons from '@/components/WhatsAppButton'
+import GlowingDivider from '@/components/GlowingDivider'
 
 function HomeIcon() {
   return (
@@ -43,7 +44,7 @@ const sectors = [
       'Propiedades de alquiler temporario',
       'Limpieza post-obra residencial',
     ],
-    image: 'https://placehold.co/560x380/2A2825/C9A84C?text=Limpieza+Hogar',
+    image: 'https://placehold.co/560x380/2A2825/E8C870?text=Limpieza+Hogar',
   },
   {
     id: 'industria',
@@ -58,7 +59,7 @@ const sectors = [
       'Centros comerciales y locales',
       'Plantas industriales y depósitos',
     ],
-    image: 'https://placehold.co/560x380/2A2825/C9A84C?text=Limpieza+Industrial',
+    image: 'https://placehold.co/560x380/2A2825/E8C870?text=Limpieza+Industrial',
   },
 ]
 
@@ -112,13 +113,13 @@ export default function Page() {
           <div className="absolute inset-0" style={{ background: 'var(--bg-primary)', opacity: 0.6 }} />
 
           <div className="relative z-10 max-w-3xl mx-auto text-center animate-fade-in-up">
-            <p className="text-xs uppercase tracking-[0.4em] mb-6 inline-block" style={{ color: 'var(--accent-gold)' }}>
+            <p className="text-sm uppercase tracking-[0.08em] mb-6 inline-block" style={{ color: 'var(--accent-gold)' }}>
               ✦ &nbsp; Excelencia en cada detalle &nbsp; ✦
             </p>
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               <span style={{ color: 'var(--text-primary)' }}>No Hacemos Limpieza,</span>
               <br />
-              <span className="text-shimmer">Creamos Bio-Bienestar</span>
+              <span style={{ color: 'var(--accent-gold)', fontSize: 'calc(1em + 0.2rem)' }}>Creamos Bio-Bienestar</span>
             </h1>
             <p className="text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Servicios profesionales de alta gama para hogares e industria. Personal
@@ -139,7 +140,7 @@ export default function Page() {
             <div className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto pt-8" style={{ borderTop: '1px solid var(--border-color)' }}>
               {[
                 { value: '+15', label: 'Clientes activos' },
-                { value: '+3', label: 'Años de experiencia' },
+                { value: '+6', label: 'Años de experiencia' },
                 { value: '100%', label: 'Satisfacción garantizada' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
@@ -161,7 +162,7 @@ export default function Page() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
                 ¿Dónde necesitás limpieza?
               </h2>
-              <div className="gold-divider" />
+              <GlowingDivider />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
@@ -175,7 +176,7 @@ export default function Page() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={sector.image} alt={sector.title} className="w-full h-full object-cover opacity-60" />
                     <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, var(--bg-card) 0%, transparent 60%)' }} />
-                    <div className="absolute bottom-4 left-5">{sector.icon}</div>
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2">{sector.icon}</div>
                   </div>
                   <div className="p-6">
                     <p className="text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--accent-gold)' }}>{sector.subtitle}</p>
@@ -211,7 +212,7 @@ export default function Page() {
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
                 Creamos Seguridad,<br />Bio-Bienestar &amp; Confort.
               </h2>
-              <div className="gold-divider" />
+              <GlowingDivider />
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((feat, idx) => (
@@ -239,58 +240,45 @@ export default function Page() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
                 Contamos con estos Servicios
               </h2>
-              <div className="gold-divider" />
+              <GlowingDivider />
             </div>
-            <div className="grid sm:grid-cols-3 gap-6">
-              {[
-                {
-                  title: 'Albañil',
-                  icon: (
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M2 20L12 4l10 16H2z" />
-                      <path d="M6 20L12 10l6 10" />
-                    </svg>
-                  ),
-                  desc: 'Realizamos trabajos de albañilería en general: revoques, mampostería, contrapisos, colocación de cerámicos, y todo tipo de reparaciones estructurales para hogares y comercios.',
-                },
-                {
-                  title: 'Mecánica',
-                  icon: (
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="9" />
-                      <path d="M12 7v5l3 3" />
-                      <path d="M5 3L3 5" />
-                      <path d="M21 3l-2 2" />
-                    </svg>
-                  ),
-                  desc: 'Servicio de mecánica integral: mantenimiento preventivo y correctivo de vehículos, diagnóstico computarizado, reparación de motores, frenos, suspensión y sistemas eléctricos.',
-                },
-                {
-                  title: 'Plomería',
-                  icon: (
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M4 12h16" />
-                      <path d="M12 4v16" />
-                      <circle cx="12" cy="12" r="9" />
-                    </svg>
-                  ),
-                  desc: 'Soluciones profesionales de plomería: instalación y reparación de cañerías, tanques de agua, desagües, termotanques, y todo tipo de arreglos sanitarios con garantía.',
-                },
-              ].map((svc, idx) => (
-                <div
-                  key={svc.title}
-                  className="p-8 rounded-xl card-hover flex flex-col items-center text-center"
-                  style={{
-                    background: 'var(--bg-card)',
-                    border: '2px solid #CD7F32',
-                    animationDelay: `${idx * 0.1}s`,
-                  }}
-                >
-                  <div className="mb-5">{svc.icon}</div>
-                  <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>{svc.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{svc.desc}</p>
-                </div>
-              ))}
+            <div className="max-w-xl mx-auto">
+              <div
+                className="p-6 rounded-sm card-hover overflow-hidden relative"
+                style={{
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-color)',
+                  boxShadow: '0 4px 24px var(--shadow-color), 6px -6px 30px rgba(0,0,0,0.35)',
+                }}
+              >
+                <div className="absolute top-0 right-0 left-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #CD7F32 80%)' }} />
+                <div className="absolute top-0 right-0 bottom-0 w-[2px]" style={{ background: 'linear-gradient(180deg, #CD7F32 20%, transparent)' }} />
+                <h3 className="text-base font-bold mb-5 text-center uppercase tracking-[0.2em]" style={{ color: 'var(--accent-gold)' }}>
+                  Realizamos servicios con personal idóneo en cada rubro
+                </h3>
+                <ul className="space-y-2">
+                  {[
+                    'Electricista',
+                    'Plomería',
+                    'Ceramistas',
+                    'Jardinería',
+                    'Construcción húmedo & seco',
+                    'Personal de Seguridad',
+                    'Carpintería en Madera',
+                    'Pinturas en obra y particular',
+                    'Metalurgia',
+                    'Instalación de Gas',
+                    'Instalación de Baños',
+                    'Piscinista',
+                    'Riego por goteo',
+                    'Electrónico tableros',
+                  ].map((s) => (
+                    <li key={s} className="flex items-center gap-2.5 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                      <CheckIcon />{s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -340,7 +328,7 @@ export default function Page() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
                 Empresas que nos acompañan
               </h2>
-              <div className="gold-divider" />
+              <GlowingDivider />
             </div>
 
             {socios.length > 0 ? (
