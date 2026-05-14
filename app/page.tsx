@@ -1,5 +1,3 @@
-import fs from 'fs'
-import path from 'path'
 import ServiceCarousel from '@/components/ServiceCarousel'
 import FloatingButtons from '@/components/WhatsAppButton'
 import GlowingDivider from '@/components/GlowingDivider'
@@ -72,22 +70,7 @@ const features = [
   { icon: '◈', title: 'Garantía de Satisfacción', desc: 'Si no quedás conforme, volvemos sin cargo adicional hasta que el resultado sea perfecto.' },
 ]
 
-function getSocios(): { name: string; logo: string }[] {
-  const dir = path.join(process.cwd(), 'public', 'empresas', 'conjunto')
-  try {
-    return fs.readdirSync(dir)
-      .filter((f) => /\.(png|jpe?g|webp|svg)$/i.test(f))
-      .map((f) => ({
-        name: f.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' ').trim(),
-        logo: `/empresas/conjunto/${f}`,
-      }))
-  } catch {
-    return []
-  }
-}
-
 export default function Page() {
-  const socios = getSocios()
   const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5491100000000'
   const defaultMsg = 'Hola%2C%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20de%20limpieza%20profesional.'
   const waHref = `https://wa.me/${number}?text=${defaultMsg}`
@@ -318,55 +301,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════
-            EMPRESAS QUE NOS ACOMPAÑAN
-        ══════════════════════════════════════════ */}
-        <section className="py-16 px-4" style={{ background: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)' }}>
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-10">
-              <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>
-                Socios comerciales
-              </p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                Empresas que nos acompañan
-              </h2>
-              <GlowingDivider />
-            </div>
-
-            {socios.length > 0 ? (
-              <div className="flex flex-wrap items-center justify-center gap-10">
-                {socios.map((socio) => (
-                  <div
-                    key={socio.name}
-                    className="flex items-center justify-center p-5 rounded-xl"
-                    style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', minWidth: '160px' }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={socio.logo}
-                      alt={socio.name}
-                      className="h-14 w-auto object-contain opacity-80"
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="flex flex-wrap items-center justify-center gap-6">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-center p-5 rounded-xl"
-                    style={{ background: 'var(--bg-card)', border: '1px dashed var(--border-color)', minWidth: '160px', minHeight: '80px' }}
-                  >
-                    <span className="text-xs uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>
-                      Próximamente
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
       </main>
 
       <FloatingButtons />
