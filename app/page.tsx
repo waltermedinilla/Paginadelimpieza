@@ -202,43 +202,14 @@ export default function Page() {
         <ServiceCarousel />
 
         {/* ══════════════════════════════════════════
-            POR QUÉ ELEGIRNOS
-        ══════════════════════════════════════════ */}
-        <section id="nosotros" className="py-20 px-4 relative overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[600px] h-[2px] pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }} />
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>Por qué elegirnos</p>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                Creamos Seguridad,<br />Bio-Bienestar &amp; Confort.
-              </h2>
-              <GlowingDivider />
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {features.map((feat, idx) => (
-                <div
-                  key={feat.title}
-                  className="p-6 rounded-sm card-hover"
-                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', animationDelay: `${idx * 0.1}s` }}
-                >
-                  <span className="text-2xl block mb-4" style={{ color: 'var(--accent-gold)' }}>{feat.icon}</span>
-                  <h3 className="text-base font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{feat.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{feat.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════
-            CONTAMOS CON ESTOS SERVICIOS
+            SERVICIOS
         ══════════════════════════════════════════ */}
         <section className="py-20 px-4" style={{ background: 'var(--bg-primary)' }}>
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>Servicios</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                Contamos con estos Servicios
+                Servicios que transforman tu Ambiente.
               </h2>
               <GlowingDivider />
             </div>
@@ -273,7 +244,7 @@ export default function Page() {
                     'Riego por goteo',
                     'Electrónico tableros',
                   ].map((s) => (
-                    <li key={s} className="flex items-center gap-2.5 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                    <li key={s} className="flex items-center gap-2.5 text-lg" style={{ color: 'var(--text-secondary)' }}>
                       <CheckIcon />{s}
                     </li>
                   ))}
@@ -282,6 +253,37 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        {/* ══════════════════════════════════════════
+            POR QUÉ ELEGIRNOS
+        ══════════════════════════════════════════ */}
+        <section id="nosotros" className="py-20 px-4 relative overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[600px] h-[2px] pointer-events-none" style={{ background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }} />
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-xs uppercase tracking-[0.3em] mb-3" style={{ color: 'var(--accent-gold)' }}>Por qué elegirnos</p>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
+                Creamos Seguridad,<br />Bio-Bienestar &amp; Confort.
+              </h2>
+              <GlowingDivider />
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {features.map((feat, idx) => (
+                <div
+                  key={feat.title}
+                  className="p-6 rounded-sm card-hover"
+                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', animationDelay: `${idx * 0.1}s` }}
+                >
+                  <span className="text-2xl block mb-4" style={{ color: 'var(--accent-gold)' }}>{feat.icon}</span>
+                  <h3 className="text-base font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{feat.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{feat.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
 
         {/* ══════════════════════════════════════════
             CTA CONTACTO
