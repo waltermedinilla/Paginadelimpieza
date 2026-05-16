@@ -77,7 +77,7 @@ npm run lint      # ESLint sobre app/ y components/
 ```
 /app
   layout.tsx              — Root layout, fuente, metadatos, script anti-FOUC
-  page.tsx                — Página principal (hero, sectores, planes, servicios, CTA, socios)
+  page.tsx                — Página principal (hero, sectores, planes, servicios, CTA)
   globals.css             — Variables CSS de temas, animaciones, botones, scrollbar
   nosotros/page.tsx       — Página "Sobre Nosotros"
   presupuesto/page.tsx    — Formulario de presupuesto (vía WhatsApp)
@@ -117,7 +117,7 @@ Colocar imágenes en `public/galeria/[categoria]/`. Compatible con las categorí
 Editar el array `tiers` en `components/ServiceCarousel.tsx`.
 
 ### Modificar servicios del recuadro de profesiones
-Editar el array de oficios en `app/page.tsx`.
+Editar el array de oficios en `app/page.tsx` (ej: Electricista, Plomería, Estaciones de Servicio, etc.).
 
 ### Navegación duplicada
 El array `navLinks` está repetido en `Header.tsx`, `Footer.tsx` y `MobileMenu.tsx`. Si se agregan o remueven páginas, actualizar los tres.
